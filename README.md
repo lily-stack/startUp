@@ -15,3 +15,10 @@ Do you like reading? Have you ever struggled to know what to read next after fin
 Here is a sequence diagram that shows how people would interact with the backend to post and comment.
 
 ![backend interaction](IMG_1854.jpg)
+
+### Key Features
+
+- Secure login over HTTPS
+- Ability to post a new book review
+- Ability to comment on other book reviews
+- Alerted when others comment on your book review
