@@ -10,7 +10,7 @@ Do you like reading? Have you ever struggled to know what to read next after fin
 
 ### Design
 
-<img src=IMG_1853.jpg width="400" height="300">
+<img src=IMG_1853.jpg width="500" height="300">
 
 Here is a sequence diagram that shows how people would interact with the backend to post and comment.
 
