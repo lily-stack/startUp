@@ -31,11 +31,17 @@ I am going to use the required technologies in the following ways.
 - **CSS** - Application styling that looks good on different screen sizes, uses good whitespace, color choice and contrast.
 - **JavaScript** - Provides login, posting display, commenting display, backend endpoint calls.
 - **Service** - Backend service with endpoints for:
+
     login
+
     retrieving posts
+
     submitting posts
+
     retrieving comments
+
     submitting comments
+    
 - **DB/Login** - Store users, posts, and comments in database. Register and login users. Credentials securely stored in database. Can't post or comment unless authenticated.
 - **WebSocket** -  When a user posts a new book, all users are notified. When a user comments on a book post, the user who posted the book will be notified of the comment.
 - **React** - Application ported to use the React web framework.
