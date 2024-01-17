@@ -10,13 +10,11 @@ Do you like reading? Have you ever struggled to know what to read next after fin
 
 ### Design
 
-[//]: # (![design image](IMG_1853.jpg))
-<img src=IMG_1853.jpg width="75" height="75">
+<img src=IMG_1853.jpg width="100" height="100">
 
 Here is a sequence diagram that shows how people would interact with the backend to post and comment.
 
-[//]: # (![backend interaction](IMG_1854.jpg))
-<img src=IMG_1854.jpg width="50" height="50">
+<img src=IMG_1854.jpg width="100" height="100">
 
 
 ### Key Features
