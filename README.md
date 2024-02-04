@@ -46,3 +46,7 @@ I am going to use the required technologies in the following ways.
 - **DB/Login** - Store users, posts, and comments in database. Register and login users. Credentials securely stored in database. Can't post or comment unless authenticated.
 - **WebSocket** -  When a user posts a new book, all users are notified. When a user comments on a book post, the user who posted the book will be notified of the comment.
 - **React** - Application ported to use the React web framework.
+
+## HTML Delivarable
+
+### 
