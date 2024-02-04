@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Share and Review</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <h1>Book Share and Review<sup>&reg;</sup></h1>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+        <menu>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="book.html">Book Feed</a></li>
+          <li><a href="about.html">About</a></li>
+        </menu>
+      </nav>
+      <hr />
+    </header>
+    <main>
+        <h1>Recommend a Book</h1>
+        <p>What book would you like to recommend?</p>
+        <form action="book.html" method="post">
+            <div class="container">
+              <label for="title"><b>Book Title</b></label>
+              <input type="text" placeholder="Enter Book Title" name="title" required>
+          
+              <label for="author"><b>Author</b></label>
+              <input type="text" placeholder="Enter Author Name" name="author" required>
+
+              <label for="rating"><b>Rating</b></label>
+              <input type="number" placeholder="Enter Rating out of 5" name="ratng" required>
+          
+              <button type="submit">Submit</button>
+            </div>
+        </form>
+        <hr />
+        <h1>Comment</h1>
+        <p>What would you like to say?</p>
+        <form action="book.html" method="post">
+            <div class="container">
+              <label for="title"><b>Comment</b></label>
+              <input type="text" placeholder="Enter Comment" name="comment" required>
+
+              <button type="submit">Post</button>
+            </div>
+        </form>
+    </main>
+  </body>
+</html>
