@@ -42,6 +42,8 @@ I am going to use the required technologies in the following ways.
     retrieving comments
 
     submitting comments
+
+    posting cover photos of a book
     
 - **DB/Login** - Store users, posts, and comments in database. Register and login users. Credentials securely stored in database. Can't post or comment unless authenticated.
 - **WebSocket** -  When a user posts a new book, all users are notified. When a user comments on a book post, the user who posted the book will be notified of the comment.
@@ -49,4 +51,20 @@ I am going to use the required technologies in the following ways.
 
 ## HTML Delivarable
 
-### 
+For this deliverable I built out the structure of my application using HTML.
+
+- **HTML Pages** - 3 HTML pages that represent the ability to login, comment and suggest a book, and an about page.
+
+- **Links** - Each HTML page contains links to navigate to the Home/log in page, the comment and suggest page, and the about page.
+
+- **Text** - The option to suggest a book and rate it and to comment are represented by a textual description.
+
+- **3rd Party Service Call** - A 3rd party service from PenguinHouse will be used to publish certain book covers.
+
+- **Images** - I included an image of books in the about HTML page.
+
+- **Login** - Input box and submit button for login. 
+
+- **Database** - Books recommended and who recommended them as well as comments and who leaves what comments will be data pulled from the database.
+
+- **WebSocket** - A notification will be sent in real time when someone suggests a new book and when someone makes a new comment.
