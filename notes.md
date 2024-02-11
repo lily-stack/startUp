@@ -13,3 +13,12 @@ Remote shell into server command:  ssh -i [key pair file] ubuntu@[ip address]
 To make changes in security for a secure connection, edit the Caddyfile file -- use https now
 
 link to codePen code for HTML, CSS, and JavaScript practice https://codepen.io/Lily-Hill/pen/NWJXemp
+
+Deployment: use git bash not powershell
+
+ ./deployFiles.sh -k ~/CS260/\$Reviewer260\$.pem -h shareyourbookshareyourthoughts.click -s startup
+
+ chmod 600 $Reviewer260$.pem     ------- change access for public key
+
+
+
