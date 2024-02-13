@@ -16,41 +16,44 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
-    <header>
-      <h1>Book Share and Review</h1>
-
-      <nav>
-        <menu>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="book.html">Book Feed</a></li>
-            <li><a href="about.html">About</a></li>
+  <body class="bg-dark text-light">
+    <header class="container-fluid">
+      <nav class="navbar fixed-top navbar-dark"></nav>
+        <a class="navbar-brand" href="#">Book Share and Review<sup>&reg;</sup></a>
+        <menu class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="book.html">Book Feed</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
         </menu>
       </nav>
 
       <hr />
     </header>
 
-    <main>
-        <img alt="Books" src="https://freerangestock.com/sample/128465/books-in-shelf-.jpg" width="400" height="200"/>
+    <main class="container-fluid bg-secondary text-center">
+      <div>
+        <div id="picture" class="picture-box"><img alt="Books" src="https://freerangestock.com/sample/128465/books-in-shelf-.jpg" width="400" height="200"/></div>
 
-      <p>
-        This is a place for you to share the books you've been reading with friends and other members of the community. 
-        Share what you liked or didn't like and give a rating out of 5 stars. Comment on others recommendations if 
-        you have more to say about a different book already recommended.
-      </p>
+        <p>
+          This is a place for you to share the books you've been reading with friends and other members of the community. 
+          Share what you liked or didn't like and give a rating out of 5 stars. Comment on others recommendations if 
+          you have more to say about a different book already recommended.
+        </p>
 
-      <div id="quote">
-        <div>“Books help us understand who we are and how we are to behave. They show us what community and friendship mean; they show us how to live and die.”</div>
-        <div>- Anne Lamott</div>
+        <div id="quote" class="quote-box bg-light text-dark">
+          <p class="quote">“Books help us understand who we are and how we are to behave. They show us what community and friendship mean; they show us how to live and die.”</p>
+          <p class="author">- Anne Lamott</p>
+        </div>
       </div>
     </main>
 
-    <footer>
+    <footer class="bg-dark text-white-50">
         <hr />
-        <span class="text-reset">Author Name(s)</span>
-        <br />
-        <a href="https://github.com/lily-stack/startUp">GitHub</a>
-    </footer>
+        <div class="container-fluid"></div>
+          <span class="text-reset">Author Name(s)</span>
+          <br />
+          <a class="text-reset" href="https://github.com/lily-stack/startUp">GitHub</a>
+        </div>
+      </footer>
   </body>
 </html>
