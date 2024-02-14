@@ -21,7 +21,7 @@
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header class="container-fluid">
       <!-- Navigation elements -->
-      <nav class="navbar fixed-top navbar-dark">
+      <nav class="navbar navbar-dark">
         <a class="navbar-brand" href="#">Book Share and Review<sup>&reg;</sup></a>
         <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
         <menu class="navbar-nav">
@@ -30,33 +30,29 @@
           <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
         </menu>
       </nav>
-
-      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-      <hr />
     </header>
 
     <main class="container-fluid bg-secondary text-center">
       <div>
         <h1>Welcome</h1>
         <p>Login to find a new adventure</p>
-        <form action="index.html" method="post">
-            <div class="container">
-              <!--<label for="uname"><b>Username</b></label>-->
-              <label for="uname"><b>Username</b></label>
-              <input type="text" placeholder="Enter Username" name="uname" required>
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
+        <form action="book.html" method="get">
+          <!--<div class="container">-->
+            <!--<label for="uname"><b>Username</b></label>-->
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <button type="submit" class="btn btn-primary">Login</button>
+          <!--</div>-->
         </form>
-        <hr />
-      <div>
+      </div>
     </main>
+
     <footer class="bg-dark text-white-50">
-      <div class="container-fluid"></div>
+      <div class="container-fluid">
         <span class="text-reset">Author Name(s)</span>
-        <br />
-        <a class="text-reset" href="https://github.com/lily-stack/startUp">GitHub</a>
+        <a class="text-reset" href="https://github.com/lily-stack/startUp">Source</a>
       </div>
     </footer>
   </body>
