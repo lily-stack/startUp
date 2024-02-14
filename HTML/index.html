@@ -4,11 +4,8 @@
     <meta charset="UTF-8" />
     <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Share and Review</title>
-    <link rel="icon" href="favicon.ico" />
 
-    <link rel="stylesheet" href="main.css" />
-
+    <link rel="stylesheet" href="CSS\main.css" />
     <!-- Include bootstrap CSS framework -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -22,18 +19,18 @@
     <header class="container-fluid">
       <!-- Navigation elements -->
       <nav class="navbar navbar-dark">
-        <a class="navbar-brand" href="#">Book Share and Review<sup>&reg;</sup></a>
+        <a class="navbar-brand" href="#">Book Share and Review</a>
         <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
         <menu class="navbar-nav">
           <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="book.html">Book Feed</a></li>
+          <li class="nav-item"><a class="nav-link active" href="book.html">BookFeed</a></li>
           <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
         </menu>
       </nav>
     </header>
 
-    <main class="container-fluid bg-secondary text-center">
-      <div>
+    <main class="container-fluid bg-success text-center">
+      <div class="text-light">
         <h1>Welcome</h1>
         <p>Login to find a new adventure</p>
         <form action="book.html" method="get">
@@ -43,7 +40,7 @@
             <input type="text" placeholder="Enter Username" name="uname" required>
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-dark">Login</button>
           <!--</div>-->
         </form>
       </div>
@@ -51,7 +48,7 @@
 
     <footer class="bg-dark text-white-50">
       <div class="container-fluid">
-        <span class="text-reset">Author Name(s)</span>
+        <span class="text-reset">Lillian Hill</span>
         <a class="text-reset" href="https://github.com/lily-stack/startUp">Source</a>
       </div>
     </footer>
