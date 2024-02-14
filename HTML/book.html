@@ -20,28 +20,27 @@
   <body class="bg-dark text-light">
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header class="container-fluid">
+      <!-- Navigation elements -->
       <nav class="navbar navbar-dark">
         <a class="navbar-brand" href="#">Book Share and Review</a>
-
         <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
         <menu class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="book.html">Book Feed</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="book.html">BookFeed</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
         </menu>
       </nav>
-      <hr />
     </header>
 
-    <main class="bg-secondary">
-        <!--<h1>Notifications</h1>-->
+    <main class="bg-success">
+        <h3 class="notification-header">Notifications</h3>
         <div class="users">
           User
           <span class="user-name">Mystery user</span>
           <div id="user-messages">
-            <div class = "event"><span class="user-event">Tim</span> recommended a new book</div>
-            <div class = "event"></div><span class="user-event">Ada</span> recommended a new book</div>
-            <div class = "event"></div><span class="user-event">Tim</span> commented on your recommendation</div>
+            <div class = "event"><span class="user-event">Tim</span><span class="recommend-event"> recommended a new book</span></div>
+            <div class = "event"><span class="user-event">Ada</span><span class="recommend-event"> recommended a new book</span></div>
+            <div class = "event"><span class="user-event">Tim</span><span class="comment-event"> commented on your recommendation</span></div>
           </div>
         </div>
 
@@ -80,16 +79,16 @@
         <p>Recommend a book and give it a rating out of 5 stars with 5 being the best rating possible</p>
         <form action="book.html" method="post">
             <div class="container">
-              <label for="title"><b>Book Title</b></label>
+              <label for="title" class="title-lable"><b>Book Title</b></label>
               <input type="text" placeholder="Enter Book Title" name="title" required>
           
-              <label for="author"><b>Author</b></label>
+              <label for="author" class="title-lable"><b>Author</b></label>
               <input type="text" placeholder="Enter Author Name" name="author" required>
 
-              <label for="rating"><b>Rating</b></label>
+              <label for="rating" class="title-lable"><b>Rating</b></label>
               <input type="number" placeholder="Enter Rating out of 5" name="ratng" required>
           
-              <button type="submit">Submit</button>
+              <button type="submit" class="btn btn-dark">Submit</button>
             </div>
         </form>
         <hr />
@@ -119,10 +118,10 @@
         <p>What would you like to say?</p>
         <form action="book.html" method="post">
             <div class="container">
-              <label for="title"><b>Comment</b></label>
+              <label for="title" class="title-lable"><b>Comment</b></label>
               <input type="text" placeholder="Enter Comment" name="comment" required>
 
-              <button type="submit">Post</button>
+              <button type="submit" class="btn btn-dark">Post</button>
             </div>
         </form>
         <hr />
@@ -132,7 +131,7 @@
       <div class="container-fluid">
         <span class="text-reset">Lillian Hill</span>
         <br />
-        <a href="https://github.com/lily-stack/startUp">source</a>
+        <a class="text-reset" href="https://github.com/lily-stack/startUp">source</a>
       </div>
     </footer>
   </body>
