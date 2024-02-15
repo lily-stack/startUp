@@ -68,3 +68,19 @@ For this deliverable I built out the structure of my application using HTML.
 - **Database** - Books recommended and who recommended them as well as comments and who leaves what comments will be data pulled from the database.
 
 - **WebSocket** - A notification will be sent in real time when someone suggests a new book and when someone makes a new comment.
+
+## CSS Delivarable
+
+For this deliverable I properly styled the application into its final appearance.
+
+- **Header, footer, and main content body** - I standardized the header and footer size so they are the same on every web page. The Headers have the links to related webpages to the right of website name. Footers have my name as the author on bottom left and a link to my github labled "source" on bottom left.
+
+- **Navigation elements** - I dropped the underlines separating navigation elements from other parts of the webpage. I also changed the color for anchor elements.
+
+- **Responsive to window resizing** - My app looks great on all window sizes and devices.
+
+- **Application elements** - Used iattractive colors and used contrasting colors to make key words more noticeable and provided sufficient whitespace to make text and content easy to read.
+
+- **Application text content** - Used consistent fonts and italicized a quote to differentiate it from other text.
+
+- **Application images** - Image in about page flexes with change in size of window.
