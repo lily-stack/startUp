@@ -52,7 +52,7 @@
       </nav>
     </header>
 
-    <main class="bg-success">
+    <main class="container-fluid bg-success text-center">
         <h3 class="notification-header">Notifications</h3>
         <div class="users">
           User
@@ -100,15 +100,15 @@
         <form action="book.html" method="post">
             <div class="container">
               <label for="title" class="title-lable"><b>Book Title</b></label>
-              <input type="text" placeholder="Enter Book Title" name="title" required>
+              <input id="title" type="text" placeholder="Enter Book Title" name="title" required>
           
               <label for="author" class="title-lable"><b>Author</b></label>
-              <input type="text" placeholder="Enter Author Name" name="author" required>
+              <input id="author" type="text" placeholder="Enter Author Name" name="author" required>
 
               <label for="rating" class="title-lable"><b>Rating</b></label>
-              <input type="number" placeholder="Enter Rating out of 5" name="ratng" required>
-          
-              <button type="submit" class="btn btn-dark">Submit</button>
+              <input id="rating" type="number" placeholder="Enter Rating out of 5" name="ratng" required>
+              <!-- put event for clicking submit button -->
+              <button onclick="postBook()" type="submit" class="btn btn-dark">Submit</button>
             </div>
         </form>
         <hr />
