@@ -67,34 +67,15 @@
         <hr />
         <h1>Books</h1>
         <table class="table table-warning table-striped-columns">
-            <thead class="table-dark">
-            <tr>
-                <th>User</th>
-                <th>Book</th>
-                <th>Author</th>
-                <th>Rating</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Bob</td>
-                <td>The Odyssey</td>
-                <td>Homer</td>
-                <td>4</td>
-            </tr>
-            <tr>
-                <td>BookLover101</td>
-                <td>Warbreaker</td>
-                <td>Brandon Sanderson</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>EnglishTeacher</td>
-                <td>Eragon</td>
-                <td>Christopher Paolini</td>
-                <td>3</td>
-            </tr>
-            </tbody>
+          <thead class="table-dark">
+          <tr>
+              <th>User</th>
+              <th>Book</th>
+              <th>Author</th>
+              <th>Rating</th>
+          </tr>
+          </thead>
+          <tbody id="reviews"></tbody>
         </table>
         <p>Recommend a book and give it a rating out of 5 stars with 5 being the best rating possible</p>
         <form action="book.html" method="post">
@@ -108,7 +89,7 @@
               <label for="rating" class="title-lable"><b>Rating</b></label>
               <input id="rating" type="number" placeholder="Enter Rating out of 5" name="ratng" required>
               <!-- put event for clicking submit button -->
-              <button onclick="postBook()" type="submit" class="btn btn-dark">Submit</button>
+              <button onclick="postBook()" type="button" class="btn btn-dark">Submit</button>
             </div>
         </form>
         <hr />
@@ -159,6 +140,6 @@
         <a class="text-reset" href="https://github.com/lily-stack/startUp">Source</a>
       </div>
     </footer>
-    <script src="book.js"></script>
+    <script src="JS\book.js"></script>
   </body>
 </html>
