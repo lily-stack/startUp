@@ -21,30 +21,52 @@ function addReview(author, title, rating) {
 function getUserName() {
     return localStorage.getItem('userName') ?? 'anonymous reviewer';
 }
-//update
+
 function updateReviews(userName, author, title, rating, reviews) {
-    const date = new Date().toLocaleDateString();
-    const newScore = { name: userName, score: score, date: date };
+    const newReview = { name: userName, author: author, title: title, rating: rating };
 
-    let found = false;
-    for (const [i, prevScore] of scores.entries()) {
-      if (score > prevScore.score) {
-        scores.splice(i, 0, newScore);
-        found = true;
-        break;
-      }
+    reviews.push(newReview);
+
+    if (reviews.length > 10) {
+      reviews.length = 10;
     }
 
-    if (!found) {
-      scores.push(newScore);
-    }
-
-    if (scores.length > 10) {
-      scores.length = 10;
-    }
-
-    return scores;
+    return reviews;
 }
+
+function loadReviews() {
+    let reviews = [];
+    const reviewsText = localStorage.getItem('reviews');
+    if (reviewsText) {
+      reviews = JSON.parse(reviewsText);
+    }
+  
+    const tableBodyEl = document.querySelector('#reviews');
+  
+    if (reviews.length) {
+      for (const [i, review] of reviews.entries()) {
+        const userTdEl = document.createElement('td');
+        const titleTdEl = document.createElement('td');
+        const authorTdEl = document.createElement('td');
+        const ratingTdEl = document.createElement('td');
+  
+        userTdEl.textContent = review.userName;
+        titleTdEl.textContent = review.title;
+        authorTdEl.textContent = review.author;
+        ratingTdEl.textContent = review.rating;
+  
+        const rowEl = document.createElement('tr');
+        rowEl.appendChild(userTdEl);
+        rowEl.appendChild(titleTdEl);
+        rowEl.appendChild(authorTdEl);
+        rowEl.appendChild(ratingTdEl);
+  
+        tableBodyEl.appendChild(rowEl);
+      }
+    } else {
+      tableBodyEl.innerHTML = '<tr><td colSpan=4>Be the first to recommend a book</td></tr>';
+    }
+  }
 
 
 
