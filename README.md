@@ -84,3 +84,15 @@ For this deliverable I properly styled the application into its final appearance
 - **Application text content** - Used consistent fonts and italicized a quote to differentiate it from other text.
 
 - **Application images** - Image in about page flexes with change in size of window.
+
+## JavaScript Delivarable
+
+For this deliverable I implemented by JavaScript so that the application works for a single user. I also added placeholders for future technology.
+
+- **login** - When you login, you are taken to the review a book and comment page.
+
+- **database** - displayed the book ratings and comments. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
+
+- **WebSocket** - I used the setInterval function to periodically send a fake commen periodically. This will be replaced with WebSocket messages later.
+
+- **Application logic** - Each table dynamically changes when a new review or comment is added to show the new review or comment on its respective table once they are submitted. Past reviews and comments are also shown in the table.
