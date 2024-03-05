@@ -74,5 +74,78 @@ function loadReviews() {
       tableBodyEl.innerHTML = '<tr><td colSpan=4>Be the first to recommend a book</td></tr>';
     }
   }
-window.onload = loadReviews;
 
+
+
+
+
+
+
+
+
+
+
+  function postComment() {
+    var ctitle = document.getElementById("ctitle").value;
+    var comment = document.getElementById("comment").value;
+    addComment(ctitle, comment);
+}
+
+function addComment(ctitle, comment) {
+    const userName = this.getUserName();
+    let comments = [];
+    const commentsText = localStorage.getItem('comments');
+    if (commentsText) {
+      comments = JSON.parse(commentsText);
+    }
+    comments = this.updateComments(userName, ctitle, comment, comments);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    loadComments();
+}
+
+function updateComments(userName, ctitle, comment, comments) {
+    const newComment = { userName: userName, ctitle: ctitle, comment: comment };
+
+    comments.push(newComment);
+
+    if (comments.length > 10) {
+      comments.length = 10;
+    }
+
+    return comments;
+}
+
+function loadComments() {
+    let comments = [];
+    const commentsText = localStorage.getItem('comments');
+    if (commentsText) {
+      comments = JSON.parse(commentsText);
+    }
+    const tableBodyEl = document.querySelector('#comments');
+
+    if (comments.length) {
+      for (const comment of comments) {
+        const userTdEl = document.createElement('td');
+        const ctitleTdEl = document.createElement('td');
+        const commentTdEl = document.createElement('td');
+  
+        userTdEl.textContent = comment.userName;
+        ctitleTdEl.textContent = comment.ctitle;
+        commentTdEl.textContent = comment.comment;
+  
+        const rowEl = document.createElement('tr');
+        rowEl.appendChild(userTdEl);
+        rowEl.appendChild(ctitleTdEl);
+        rowEl.appendChild(commentTdEl);
+  
+        tableBodyEl.appendChild(rowEl);
+      }
+    } else {
+      tableBodyEl.innerHTML = '<tr><td colSpan=4>Leave a Comment</td></tr>';
+    }
+  }
+
+window.addEventListener('load', function() {
+    loadComments();
+    loadReviews();
+});

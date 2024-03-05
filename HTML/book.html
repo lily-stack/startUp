@@ -102,33 +102,17 @@
                 <th>Comment</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>Bob</td>
-                <td>WarBreaker</td>
-                <td>Great Book!</td>
-            </tr>
-            <tr>
-                <td>BookLover101</td>
-                <td>Eragon</td>
-                <td>Weird ending but overall great plot.</td>
-            </tr>
-            <tr>
-                <td>EnglishTeacher</td>
-                <td>The Odyssey</td>
-                <td>Adequate book</td>
-            </tr>
-            </tbody>
+            <tbody id="comments"></tbody>
         </table>
         <p>What would you like to say?</p>
         <form action="book.html" method="post">
             <div class="container">
-              <label for="title" class="title-lable"><b>Book Title</b></label>
-              <input type="text" placeholder="Enter Book Title" name="title" required>
-              <label for="title" class="title-lable"><b>Comment</b></label>
-              <input type="text" placeholder="Enter Comment" name="comment" required>
+              <label for="ctitle" class="title-lable"><b>Book Title</b></label>
+              <input id="ctitle" type="text" placeholder="Enter Book Title" name="title" required>
+              <label for="comment" class="title-lable"><b>Comment</b></label>
+              <input id="comment" type="text" placeholder="Enter Comment" name="comment" required>
 
-              <button type="submit" class="btn btn-dark">Post</button>
+              <button onclick="postComment()" type="button" class="btn btn-dark">Post</button>
             </div>
         </form>
         <hr />
