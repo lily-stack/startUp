@@ -5,7 +5,6 @@
     <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <script src="JS\login.js"></script>
     <link rel="stylesheet" href="CSS\main.css" />
     <!-- Include bootstrap CSS framework -->
     <link
@@ -54,16 +53,11 @@
       <div class="text-light">
         <h1>Welcome</h1>
         <p>Login to find a new adventure</p>
-        <form action="book.html" method="get">
-          <!--<div class="container">-->
-            <!--<label for="uname"><b>Username</b></label>-->
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            <button type="submit" class="btn btn-dark">Login</button>
-          <!--</div>-->
-        </form>
+        <div>
+          <input type="text" id="uname" placeholder="Enter Username" />
+          <input type="text" id="psw" placeholder="Enter Password"  />
+          <button class="btn btn-dark" onclick="login()">Login</button>
+        </div>
       </div>
     </main>
 
@@ -74,4 +68,5 @@
       </div>
     </footer>
   </body>
+  <script src="JS\login.js"></script>
 </html>

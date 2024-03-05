@@ -10,6 +10,7 @@ function postBook() {
 function addReview(author, title, rating) {
     console.log("Adding review...");
     const userName = this.getUserName();
+    console.log("book review username: " + userName)
     let reviews = [];
     const reviewsText = localStorage.getItem('reviews');
     console.log("Loaded reviews from localStorage:", reviewsText);
@@ -49,7 +50,7 @@ function loadReviews() {
     }
     console.log("Current reviews array:", reviews);
     const tableBodyEl = document.querySelector('#reviews');
-
+    tableBodyEl.innerHTML = '';
     if (reviews.length) {
       for (const review of reviews) {
         const userTdEl = document.createElement('td');
@@ -93,6 +94,7 @@ function loadReviews() {
 
 function addComment(ctitle, comment) {
     const userName = this.getUserName();
+    console.log("comment username: " + userName)
     let comments = [];
     const commentsText = localStorage.getItem('comments');
     if (commentsText) {
@@ -122,7 +124,7 @@ function loadComments() {
       comments = JSON.parse(commentsText);
     }
     const tableBodyEl = document.querySelector('#comments');
-
+    tableBodyEl.innerHTML = '';
     if (comments.length) {
       for (const comment of comments) {
         const userTdEl = document.createElement('td');
@@ -144,6 +146,13 @@ function loadComments() {
       tableBodyEl.innerHTML = '<tr><td colSpan=4>Leave a Comment</td></tr>';
     }
   }
+  // Simulate chat messages that will come over WebSocket
+setInterval(() => {
+    const chatText = document.querySelector('#user-messages');
+    chatText.innerHTML =
+      `<div class="event"><span class="user-event">Bob</span> commented on your recommendation</div>` +
+      chatText.innerHTML;
+  }, 9000);
 
 window.addEventListener('load', function() {
     loadComments();
