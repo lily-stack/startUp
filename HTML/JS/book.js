@@ -158,3 +158,21 @@ window.addEventListener('load', function() {
     loadComments();
     loadReviews();
 });
+
+window.addEventListener('load', function() {
+    // Load notifications
+    loadNotifications();
+    loadComments();
+    loadReviews();
+});
+
+function loadNotifications() {
+    // Retrieve username from local storage
+    const userName = localStorage.getItem('userName');
+
+    // Update notification messages with the username
+    const userMessages = document.querySelectorAll('.userevents');
+    userMessages.forEach(user => {
+        user.textContent = userName;
+    });
+}
