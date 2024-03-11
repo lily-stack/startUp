@@ -24,3 +24,14 @@ apiRouter.post('/review', (req, res) => {
     reviews = updateReviews(req.body, reviews);
     res.send(reviews);
 });
+
+// GetComments
+apiRouter.get('/comments', (_req, res) => {
+    res.send(comments);
+});
+
+// SubmitComment
+apiRouter.post('/comment', (req, res) => {
+    comments = updateComments(req.body, comments);
+    res.send(comments);
+});
