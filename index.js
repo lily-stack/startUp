@@ -13,3 +13,9 @@ app.use(express.static('public'));
 // Router for service endpoints
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+// GetReviews
+apiRouter.get('/reviews', (_req, res) => {
+    res.send(reviews);
+});
+
