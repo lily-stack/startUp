@@ -19,3 +19,8 @@ apiRouter.get('/reviews', (_req, res) => {
     res.send(reviews);
 });
 
+// SubmitReview
+apiRouter.post('/review', (req, res) => {
+    reviews = updateReviews(req.body, reviews);
+    res.send(reviews);
+});
