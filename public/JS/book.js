@@ -1,0 +1,189 @@
+
+function postBook() {
+    console.log("postBook() function called");
+    var author = document.getElementById("author").value;
+    var title = document.getElementById("title").value;
+    var rating = document.getElementById("rating").value;
+    addReview(author,  title,  rating);
+}
+
+function addReview(author, title, rating) {
+    console.log("Adding review...");
+    const userName = this.getUserName();
+    console.log("book review username: " + userName)
+    let reviews = [];
+    const reviewsText = localStorage.getItem('reviews');
+    console.log("Loaded reviews from localStorage:", reviewsText);
+    if (reviewsText) {
+      reviews = JSON.parse(reviewsText);
+    }
+    console.log("Current reviews array:", reviews);
+    reviews = this.updateReviews(userName, author, title, rating, reviews);
+    console.log("Updated reviews array:", reviews);
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+    loadReviews();
+}
+
+function getUserName() {
+    return localStorage.getItem('userName') ?? 'anonymous reviewer';
+}
+
+function updateReviews(userName, author, title, rating, reviews) {
+    const newReview = { userName: userName, author: author, title: title, rating: rating };
+
+    reviews.push(newReview);
+
+    if (reviews.length > 10) {
+      reviews.length = 10;
+    }
+
+    return reviews;
+}
+
+async function loadReviews() {
+    let reviews = [];
+    try {
+      const response = await fetch('/api/reviews');
+      reviews = await response.json();
+
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+    } catch {
+      const reviewsText = localStorage.geq('reviews');
+      if (reviewsText) {
+        reviews = JSON.parse(reviewsText);
+      }
+    }
+    displayReviews(reviews);
+  }
+
+  function displayReviews(reviews) {
+    const tableBodyEl = document.querySelector('#reviews');
+    tableBodyEl.innerHTML = '';
+    if (reviews.length) {
+      for (const review of reviews) {
+        const userTdEl = document.createElement('td');
+        const titleTdEl = document.createElement('td');
+        const authorTdEl = document.createElement('td');
+        const ratingTdEl = document.createElement('td');
+  
+        userTdEl.textContent = review.userName;
+        titleTdEl.textContent = review.title;
+        authorTdEl.textContent = review.author;
+        ratingTdEl.textContent = review.rating;
+  
+        const rowEl = document.createElement('tr');
+        rowEl.appendChild(userTdEl);
+        rowEl.appendChild(titleTdEl);
+        rowEl.appendChild(authorTdEl);
+        rowEl.appendChild(ratingTdEl);
+  
+        tableBodyEl.appendChild(rowEl);
+      }
+    } else {
+      tableBodyEl.innerHTML = '<tr><td colSpan=4>Be the first to recommend a book</td></tr>';
+    }
+  }
+
+  function postComment() {
+    var ctitle = document.getElementById("ctitle").value;
+    var comment = document.getElementById("comment").value;
+    addComment(ctitle, comment);
+  }
+
+function addComment(ctitle, comment) {
+    const userName = this.getUserName();
+    console.log("comment username: " + userName)
+    let comments = [];
+    const commentsText = localStorage.getItem('comments');
+    if (commentsText) {
+      comments = JSON.parse(commentsText);
+    }
+    comments = this.updateComments(userName, ctitle, comment, comments);
+    localStorage.setItem('comments', JSON.stringify(comments));
+    loadComments();
+}
+
+function updateComments(userName, ctitle, comment, comments) {
+    const newComment = { userName: userName, ctitle: ctitle, comment: comment };
+
+    comments.push(newComment);
+
+    if (comments.length > 10) {
+      comments.length = 10;
+    }
+
+    return comments;
+}
+
+async function loadComments() {
+  let comments = [];
+  try {
+    // Get the latest comments from the service
+    const response = await fetch('/api/comments');
+    comments = await response.json();
+
+    // Save the comments in case we go offline in the future
+    localStorage.setItem('comments', JSON.stringify(comments));
+  } catch {
+    const commentsText = localStorage.getItem('comments');
+    if (commentsText) {
+      comments = JSON.parse(commentsText);
+    }
+  }
+  displayComments(comments);
+}
+
+displayCOmments(comments) {
+  const tableBodyEl = document.querySelector('#comments');
+  tableBodyEl.innerHTML = '';
+  if (comments.length) {
+    for (const comment of comments) {
+      const userTdEl = document.createElement('td');
+      const ctitleTdEl = document.createElement('td');
+      const commentTdEl = document.createElement('td');
+
+      userTdEl.textContent = comment.userName;
+      ctitleTdEl.textContent = comment.ctitle;
+      commentTdEl.textContent = comment.comment;
+
+      const rowEl = document.createElement('tr');
+      rowEl.appendChild(userTdEl);
+      rowEl.appendChild(ctitleTdEl);
+      rowEl.appendChild(commentTdEl);
+
+      tableBodyEl.appendChild(rowEl);
+    }
+  } else {
+    tableBodyEl.innerHTML = '<tr><td colSpan=4>Leave a Comment</td></tr>';
+  }
+}
+// Simulate chat messages that will come over WebSocket
+setInterval(() => {
+  const chatText = document.querySelector('#user-messages');
+  chatText.innerHTML =
+    `<div class="event"><span class="user-event">Bob</span> commented on your recommendation</div>` +
+    chatText.innerHTML;
+}, 9000);
+
+window.addEventListener('load', function() {
+  loadComments();
+  loadReviews();
+});
+
+window.addEventListener('load', function() {
+  // Load notifications
+  loadNotifications();
+  loadComments();
+  loadReviews();
+});
+
+function loadNotifications() {
+  // Retrieve username from local storage
+  const userName = localStorage.getItem('userName');
+
+  // Update notification messages with the username
+  const userMessages = document.querySelectorAll('.userevents');
+  userMessages.forEach(user => {
+      user.textContent = userName;
+  });
+}
