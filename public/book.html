@@ -124,6 +124,81 @@
         <a class="text-reset" href="https://github.com/lily-stack/startUp">Source</a>
       </div>
     </footer>
-    <script src="JS\book.js"></script>
+    <!--<script src="JS\book.js"></script>-->
+    <script>
+      async function postBook() {
+          const author = document.getElementById("author").value;
+          const title = document.getElementById("title").value;
+          const rating = document.getElementById("rating").value;
+
+          try {
+              const response = await fetch('/api/review', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ author, title, rating })
+              });
+
+              if (response.ok) {
+                  const updatedReviews = await response.json();
+                  console.log("Reviews updated:", updatedReviews);
+                  loadReviews(updatedReviews);
+              } else {
+                  console.error('Failed to post review:', response.statusText);
+              }
+          } catch (error) {
+              console.error('Error posting review:', error);
+          }
+      }
+
+      function loadReviews(reviews) {
+          const tableBodyEl = document.querySelector('#reviews');
+          tableBodyEl.innerHTML = '';
+
+          if (reviews.length) {
+              for (const review of reviews) {
+                  const userTdEl = document.createElement('td');
+                  const titleTdEl = document.createElement('td');
+                  const authorTdEl = document.createElement('td');
+                  const ratingTdEl = document.createElement('td');
+
+                  userTdEl.textContent = review.userName;
+                  titleTdEl.textContent = review.title;
+                  authorTdEl.textContent = review.author;
+                  ratingTdEl.textContent = review.rating;
+
+                  const rowEl = document.createElement('tr');
+                  rowEl.appendChild(userTdEl);
+                  rowEl.appendChild(titleTdEl);
+                  rowEl.appendChild(authorTdEl);
+                  rowEl.appendChild(ratingTdEl);
+
+                  tableBodyEl.appendChild(rowEl);
+              }
+          } else {
+              tableBodyEl.innerHTML = '<tr><td colspan="4">Be the first to recommend a book</td></tr>';
+          }
+      }
+
+      // Function to load reviews when the page is first accessed
+      async function initialize() {
+          try {
+              const response = await fetch('/api/review');
+              if (response.ok) {
+                  const initialReviews = await response.json();
+                  console.log("Initial reviews loaded:", initialReviews);
+                  loadReviews(initialReviews);
+              } else {
+                  console.error('Failed to load initial reviews:', response.statusText);
+              }
+          } catch (error) {
+              console.error('Error loading initial reviews:', error);
+          }
+      }
+
+      // Call the initialize function when the page loads
+      window.addEventListener('load', initialize);
+    </script>
   </body>
 </html>
