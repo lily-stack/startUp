@@ -96,3 +96,17 @@ For this deliverable I implemented by JavaScript so that the application works f
 - **WebSocket** - I used the setInterval function to periodically send a fake commen periodically. This will be replaced with WebSocket messages later.
 
 - **Application logic** - Each table dynamically changes when a new review or comment is added to show the new review or comment on its respective table once they are submitted. Past reviews and comments are also shown in the table.
+
+## Service Delivarable
+
+For this deliverable I added backend endpoints that receive reviews and comments and returns the reviews and comments.
+
+- **Node.js/Express HTTP service** - done
+
+- **Static middleware for frontend** - done
+
+- **Calls to third party endpoints** - uses 3rd party calls to get quote and picture like in simon on about page
+
+- **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for gettig and submitting reviews and comments.
+
+- **Frontend calls service endpoint** -  I did this using the fetch function.
