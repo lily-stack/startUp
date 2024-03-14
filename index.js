@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 let reviews = [];
-
+let comments = [];
 // Router for service endpoints
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
@@ -19,7 +19,7 @@ app.use(`/api`, apiRouter);
 // GetReviews
 apiRouter.get('/review', (_req, res) => {
     res.send(reviews);
-5});
+});
 
 // SubmitReview
 apiRouter.post('/review', (req, res) => {
@@ -36,7 +36,8 @@ apiRouter.get('/comment', (_req, res) => {
 
 // SubmitComment
 apiRouter.post('/comment', (req, res) => {
-    comments = updateComments(req.body, comments);
+    const newComment = req.body;
+    comments.push(newComment);
     res.send(comments);
 });
 
@@ -52,15 +53,14 @@ app.listen(port, () => {
 // updateScores considers a new score for inclusion in the high scores.
 // The high scores are saved in memory and disappear whenever the service is restarted.
 
-function updateReviews(newReview, reviews) {
+/*function updateReviews(newReview, reviews) {
     reviews.push(newReview);
 
   return reviews;
-}
+}*/
 
-let comments = [];
-function updateComments(newComment, comments) {
+/*function updateComments(newComment, comments) {
     comments.push(newComment);
 
   return comments;
-}
+}*/
