@@ -49,18 +49,3 @@ app.use((_req, res) => {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
-
-// updateScores considers a new score for inclusion in the high scores.
-// The high scores are saved in memory and disappear whenever the service is restarted.
-
-/*function updateReviews(newReview, reviews) {
-    reviews.push(newReview);
-
-  return reviews;
-}*/
-
-/*function updateComments(newComment, comments) {
-    comments.push(newComment);
-
-  return comments;
-}*/
