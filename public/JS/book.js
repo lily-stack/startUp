@@ -308,14 +308,14 @@ function loadComments() {
   } else {
     tableBodyEl.innerHTML = '<tr><td colSpan=4>Leave a Comment</td></tr>';
   }
-}
+}*/
 // Simulate chat messages that will come over WebSocket
 setInterval(() => {
   const chatText = document.querySelector('#user-messages');
   chatText.innerHTML =
     `<div class="event"><span class="user-event">Bob</span> commented on your recommendation</div>` +
     chatText.innerHTML;
-}, 9000);*/
+}, 9000);
 
 function loadNotifications() {
   // Retrieve username from local storage
