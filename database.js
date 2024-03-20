@@ -51,7 +51,7 @@ function addbook(book) {
   bookCollection.insertOne(book);
 }
 
-function addauthor(author) {
+function addAuthor(author) {
   authorCollection.insertOne(author);
 }
 
@@ -62,3 +62,14 @@ function addComment(comment) {
 function addCommentBook(commentBook) {
   commentBookCollection.insertOne(commentBook);
 }
+
+module.exports = {
+  getUser,
+  getUserByToken,
+  createUser,
+  addRating,
+  addbook,
+  addAuthor,
+  addComment,
+  addCommentBook,
+};
