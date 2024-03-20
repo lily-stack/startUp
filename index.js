@@ -114,3 +114,8 @@ apiRouter.post('/comment', async (req, res) => {
     res.send(comments);
 });
 
+// Default error handler
+app.use(function (err, req, res, next) {
+    res.status(500).send({ type: err.name, message: err.message });
+});
+
