@@ -42,3 +42,23 @@ async function createUser(email, password) {
 
   return user;
 }
+
+function addRating(rating) {
+  ratingCollection.insertOne(rating);
+}
+
+function addbook(book) {
+  bookCollection.insertOne(book);
+}
+
+function addauthor(author) {
+  authorCollection.insertOne(author);
+}
+
+function addComment(comment) {
+  commentCollection.insertOne(comment);
+}
+
+function addCommentBook(commentBook) {
+  commentBookCollection.insertOne(commentBook);
+}
