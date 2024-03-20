@@ -20,3 +20,7 @@ const commentBookCollection = db.collection('commentBook');
   console.log(`Unable to connect to database with ${url} because ${ex.message}`);
   process.exit(1);
 });
+
+function getUser(email) {
+  return userCollection.findOne({ email: email });
+}
