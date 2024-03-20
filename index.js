@@ -94,7 +94,7 @@ secureApiRouter.get('/review', async (_req, res) => {
 // SubmitReview
 secureApiRouter.post('/review', async (req, res) => {
     //reviews = updateReviews(req.body, reviews);
-    const review = { ...req.body, ip: req.ip };
+    const review = req.body//{ ...req.body, ip: req.ip };
     await DB.addReview(review);
     const reviews = await DB.getReviews();
     res.send(reviews);
@@ -108,10 +108,17 @@ secureApiRouter.get('/comment', async (_req, res) => {
 
 // SubmitComment
 secureApiRouter.post('/comment', async (req, res) => {
-    const comment = { ...req.body, ip: req.ip };
+    const comment = req.body;//{ ...req.body, ip: req.ip };
     await DB.addComment(comment);
-  const comments = await DB.getComments();
+    const comments = await DB.getComments();
     res.send(comments);
+});
+
+// AddRating
+secureApiRouter.post('/rating', async (req, res) => {
+    const { userId, bookId, authorId, rating } = req.body;
+    await DB.addRating(userId, bookId, authorId, rating);
+    res.status(201).send({ msg: 'Rating added successfully' });
 });
 
 // Default error handler

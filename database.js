@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const config = require('./dbConfig.json');
@@ -7,11 +7,8 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('books');
 const userCollection = db.collection('user');
-const ratingCollection = db.collection('rating');
-const bookCollection = db.collection('book');
-const authorCollection = db.collection('author');
+const reviewCollection = db.collection('review');
 const commentCollection = db.collection('comment');
-const commentBookCollection = db.collection('commentBook');
 
 (async function testConnection() {
   await client.connect();
@@ -43,33 +40,34 @@ async function createUser(email, password) {
   return user;
 }
 
-function addRating(rating) {
+function addReview(userId, bookId, authorId, rating) {
   ratingCollection.insertOne(rating);
 }
 
-function addbook(book) {
-  bookCollection.insertOne(book);
+async function addbook(book) {
+  const ratingDoc = {
+    userId: ObjectId(userId),
+    bookId: ObjectId(bookId),
+    rating: rating,
+    createdAt: new Date()
+  };
+  await reviewCollection.insertOne(ratingDoc);
 }
 
-function addAuthor(author) {
-  authorCollection.insertOne(author);
-}
-
-function addComment(comment) {
-  commentCollection.insertOne(comment);
-}
-
-function addCommentBook(commentBook) {
-  commentBookCollection.insertOne(commentBook);
+async function addComment(userId, bookId, comment) {
+  const commentDoc = {
+    userId: ObjectId(userId),
+    bookId: ObjectId(bookId),
+    comment: comment,
+    createdAt: new Date()
+  };
+  await commentCollection.insertOne(commentDoc);
 }
 
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
-  addRating,
-  addbook,
-  addAuthor,
+  addReview,
   addComment,
-  addCommentBook,
 };
