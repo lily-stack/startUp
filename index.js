@@ -22,7 +22,7 @@ app.use(express.static('public'));
 app.set('trust proxy', true);
 
 // Router for service endpoints
-const apiRouter = express.Router();
+var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 // CreateAuth token for a new user
@@ -86,13 +86,13 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 // GetReviews
-apiRouter.get('/review', async (_req, res) => {
+secureApiRouter.get('/review', async (_req, res) => {
     const reviews = await DB.getReviews();
     res.send(reviews);
 });
 
 // SubmitReview
-apiRouter.post('/review', async (req, res) => {
+secureApiRouter.post('/review', async (req, res) => {
     //reviews = updateReviews(req.body, reviews);
     const review = { ...req.body, ip: req.ip };
     await DB.addReview(review);
@@ -101,13 +101,13 @@ apiRouter.post('/review', async (req, res) => {
 });
 
 // GetComments
-apiRouter.get('/comment', async (_req, res) => {
+secureApiRouter.get('/comment', async (_req, res) => {
     const comments = await DB.getComments();
     res.send(comments);
 });
 
 // SubmitComment
-apiRouter.post('/comment', async (req, res) => {
+secureApiRouter.post('/comment', async (req, res) => {
     const comment = { ...req.body, ip: req.ip };
     await DB.addComment(comment);
   const comments = await DB.getComments();
