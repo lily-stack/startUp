@@ -100,3 +100,17 @@ apiRouter.post('/review', async (req, res) => {
     res.send(reviews);
 });
 
+// GetComments
+apiRouter.get('/comment', async (_req, res) => {
+    const comments = await DB.getComments();
+    res.send(comments);
+});
+
+// SubmitComment
+apiRouter.post('/comment', async (req, res) => {
+    const comment = { ...req.body, ip: req.ip };
+    await DB.addComment(comment);
+  const comments = await DB.getComments();
+    res.send(comments);
+});
+
