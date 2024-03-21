@@ -113,8 +113,8 @@ function loadComments(comments) {
 // Function to load reviews  and comments when the page is first accessed
 async function initialize() {
   try {
-      const response = await fetch('/api/review');
-      const responseComment = await fetch('/api/comment');
+      const response = await fetch('/api/reviews');
+      const responseComment = await fetch('/api/comments');
       if (response.ok && responseComment.ok) {
           const initialReviews = await response.json();
           const initialComments = await responseComment.json();

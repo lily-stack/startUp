@@ -86,49 +86,38 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 // GetReviews
-secureApiRouter.get('/review', async (_req, res) => {
+secureApiRouter.get('/reviews', async (_req, res) => {
     const reviews = await DB.getReviews();
+    console.log("REVIEWS!!! -->", reviews);
     res.send(reviews);
 });
 
 // SubmitReview
 secureApiRouter.post('/review', async (req, res) => {
     //reviews = updateReviews(req.body, reviews);
-    const review = req.body//{ ...req.body, ip: req.ip };
-    await DB.addReview(review);
+    const { userName, title, author, rating } = req.body;
+    await DB.addReview(userName, title, author, rating);
     const reviews = await DB.getReviews();
+    console.log("REVIEWS!!! -->", reviews);
     res.send(reviews);
 });
 
 // GetComments
-secureApiRouter.get('/comment', async (_req, res) => {
+secureApiRouter.get('/comments', async (_req, res) => {
     const comments = await DB.getComments();
     res.send(comments);
 });
 
 // SubmitComment
 secureApiRouter.post('/comment', async (req, res) => {
-    const comment = req.body;//{ ...req.body, ip: req.ip };
-    await DB.addComment(comment);
+    const { userName, title, comment } = req.body;
+    await DB.addComment(userName, title, comment);
     const comments = await DB.getComments();
     res.send(comments);
 });
-
-// AddRating
-secureApiRouter.post('/rating', async (req, res) => {
-    const { userId, bookId, authorId, rating } = req.body;
-    await DB.addRating(userId, bookId, authorId, rating);
-    res.status(201).send({ msg: 'Rating added successfully' });
-});
-
 // Default error handler
 app.use(function (err, req, res, next) {
     res.status(500).send({ type: err.name, message: err.message });
-});
-
-// Return the application's default page if the path is unknown
-app.use((_req, res) => {
-    res.sendFile('index.html', { root: 'public' });
 });
 
 // Return the application's default page if the path is unknown

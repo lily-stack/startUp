@@ -1,4 +1,5 @@
-const { MongoClient, ObjectId } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb'); 
+
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 const config = require('./dbConfig.json');
@@ -40,28 +41,41 @@ async function createUser(email, password) {
   return user;
 }
 
-function addReview(userId, bookId, authorId, rating) {
-  ratingCollection.insertOne(rating);
-}
+/*function addReview(userId, bookId, authorId, rating) {
+  reviewCollection.insertOne(userId);
+  reviewCollection.insertOne(bookId);
+  reviewCollection.insertOne(authorId);
+  reviewCollection.insertOne(rating);
+}*/
 
-async function addbook(book) {
+async function addReview(userName, title, author, rating) {
   const ratingDoc = {
-    userId: ObjectId(userId),
-    bookId: ObjectId(bookId),
+    userName: userName,
+    title: title,
+    author: author,
     rating: rating,
-    createdAt: new Date()
   };
   await reviewCollection.insertOne(ratingDoc);
 }
 
-async function addComment(userId, bookId, comment) {
+async function getReviews() {
+  const reviews = await reviewCollection.find({ title: { $ne: null } }).toArray();
+  return reviews;
+}
+
+async function addComment(userName, title, comment) {
   const commentDoc = {
-    userId: ObjectId(userId),
-    bookId: ObjectId(bookId),
+    userName: userName,
+    title: title,
     comment: comment,
     createdAt: new Date()
   };
   await commentCollection.insertOne(commentDoc);
+}
+
+async function getComments() {
+  const comments = await commentCollection.find({}, { projection: { _id: 1, userName: 1, title: 1, comment: 1, createdAt: 1 } }).toArray();
+  return comments;
 }
 
 module.exports = {
@@ -70,4 +84,6 @@ module.exports = {
   createUser,
   addReview,
   addComment,
+  getComments,
+  getReviews,
 };
