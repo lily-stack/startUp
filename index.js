@@ -110,8 +110,8 @@ secureApiRouter.get('/comments', async (_req, res) => {
 
 // SubmitComment
 secureApiRouter.post('/comment', async (req, res) => {
-    const { userName, title, comment } = req.body;
-    await DB.addComment(userName, title, comment);
+    const { userName, ctitle, comment } = req.body;
+    await DB.addComment(userName, ctitle, comment);
     const comments = await DB.getComments();
     res.send(comments);
 });

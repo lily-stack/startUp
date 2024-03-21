@@ -63,10 +63,10 @@ async function getReviews() {
   return reviews;
 }
 
-async function addComment(userName, title, comment) {
+async function addComment(userName, ctitle, comment) {
   const commentDoc = {
     userName: userName,
-    title: title,
+    ctitle: ctitle,
     comment: comment,
     createdAt: new Date()
   };
@@ -74,7 +74,7 @@ async function addComment(userName, title, comment) {
 }
 
 async function getComments() {
-  const comments = await commentCollection.find({}, { projection: { _id: 1, userName: 1, title: 1, comment: 1, createdAt: 1 } }).toArray();
+  const comments = await commentCollection.find({}, { projection: { _id: 1, userName: 1, ctitle: 1, comment: 1, createdAt: 1 } }).toArray();
   return comments;
 }
 

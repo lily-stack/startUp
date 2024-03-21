@@ -73,7 +73,7 @@ async function postComment() {
 
       if (response.ok) {
           const updatedComments = await response.json();
-          console.log("Commentss updated:", updatedComments);
+          console.log("Comments updated:", updatedComments);
           loadComments(updatedComments);
       } else {
           console.error('Failed to post comment:', response.statusText);
