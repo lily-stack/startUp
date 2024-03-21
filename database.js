@@ -1,4 +1,4 @@
-const { MongoClient, ObjectId } = require('mongodb'); 
+const { MongoClient} = require('mongodb'); 
 
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
@@ -40,13 +40,6 @@ async function createUser(email, password) {
 
   return user;
 }
-
-/*function addReview(userId, bookId, authorId, rating) {
-  reviewCollection.insertOne(userId);
-  reviewCollection.insertOne(bookId);
-  reviewCollection.insertOne(authorId);
-  reviewCollection.insertOne(rating);
-}*/
 
 async function addReview(userName, title, author, rating) {
   const ratingDoc = {

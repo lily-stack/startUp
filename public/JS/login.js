@@ -1,14 +1,14 @@
 (async () => {
-    const userName = localStorage.getItem('userName');
-    if (userName) {
-      document.querySelector('#playerName').textContent = userName;
-      setDisplay('loginControls', 'none');
-      setDisplay('playControls', 'block');
-    } else {
-      setDisplay('loginControls', 'block');
-      setDisplay('playControls', 'none');
-    }
-  })();
+  const userName = localStorage.getItem('userName');
+  if (userName) {
+    document.querySelector('#userName').textContent = userName;
+    setDisplay('loginControls', 'none');
+    setDisplay('bookControls', 'block');
+  } else {
+    setDisplay('loginControls', 'block');
+    setDisplay('bookControls', 'none');
+  }
+})();
   
   async function loginUser() {
     loginOrCreate(`/api/auth/login`);
@@ -64,9 +64,9 @@
   }
   
   function setDisplay(controlId, display) {
-    const playControlEl = document.querySelector(`#${controlId}`);
-    if (playControlEl) {
-      playControlEl.style.display = display;
+    const bookControlEl = document.querySelector(`#${controlId}`);
+    if (bookControlEl) {
+      bookControlEl.style.display = display;
     }
   }
   
