@@ -111,7 +111,7 @@ For this deliverable I added backend endpoints that receive reviews and comments
 
 - **Frontend calls service endpoint** -  I did this using the fetch function.
 
-## CSS Delivarable
+## Login Delivarable
 
 For this deliverable I associate the reviews and comments with the logged in user. I stored the reviews and comments in the database.
 
