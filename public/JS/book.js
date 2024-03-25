@@ -1,3 +1,7 @@
+// Event messages
+const ReviewPostEvent = 'posted a new rview for';
+const CommentPostEvent = 'made a new comment on';
+
 async function postBook() {
   const author = document.getElementById("author").value;
   const title = document.getElementById("title").value;
@@ -17,6 +21,7 @@ async function postBook() {
           const updatedReviews = await response.json();
           console.log("Reviews updated:", updatedReviews);
           loadReviews(updatedReviews);
+          this.broadcastEvent(userName, ReviewPostEvent, title);
       } else {
           console.error('Failed to post review:', response.statusText);
       }
@@ -54,9 +59,6 @@ function loadReviews(reviews) {
   }
 }
 
-
-
-
 async function postComment() {
   const ctitle = document.getElementById("ctitle").value;
   const commentText = document.getElementById("comment").value;
@@ -72,9 +74,10 @@ async function postComment() {
       });
 
       if (response.ok) {
-          const updatedComments = await response.json();
-          console.log("Comments updated:", updatedComments);
-          loadComments(updatedComments);
+        const updatedComments = await response.json();
+        console.log("Comments updated:", updatedComments);
+        loadComments(updatedComments);
+        this.broadcastEvent(userName, CommentPostEvent, ctitle);
       } else {
           console.error('Failed to post comment:', response.statusText);
       }
@@ -152,4 +155,9 @@ function loadNotifications() {
       user.textContent = userName;
   });
 }
+
 window.addEventListener('load', loadNotifications);
+
+function getUserName() {
+    return localStorage.getItem('userName') ?? 'Mystery player';
+}
