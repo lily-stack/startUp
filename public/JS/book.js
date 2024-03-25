@@ -158,6 +158,23 @@ function loadNotifications() {
 
 window.addEventListener('load', loadNotifications);
 
-function getUserName() {
-    return localStorage.getItem('userName') ?? 'Mystery player';
-}
+// Functionality for peer communication using WebSocket
+
+function configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onopen = (event) => {
+      this.displayMsg('system', 'User', 'connected');
+    };
+    this.socket.onclose = (event) => {
+      this.displayMsg('system', 'User', 'disconnected');
+    };
+    this.socket.onmessage = async (event) => {
+      const msg = JSON.parse(await event.data.text());
+      if (msg.type === ReviewPostEvent) {
+        this.displayMsg('User', msg.from, `posted a review for  ${msg.value.title}`);
+      } else if (msg.type === CommentPostEvent) {
+        this.displayMsg('User', msg.from, `commented on ${msg.value.ctitle}`);
+      }
+    };
+  }
