@@ -28,6 +28,7 @@ class WebSocketManager {
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
         this.socket.onopen = (event) => {
+            console.log('WebSocket connection opened');
         this.displayMsg('system', 'User', 'connected');
         };
         this.socket.onclose = (event) => {
@@ -46,12 +47,23 @@ class WebSocketManager {
 }
 
 const webSocketManager = new WebSocketManager();
+//webSocketManager.configureWebSocket();
 
 async function postBook() {
   const author = document.getElementById("author").value;
   const title = document.getElementById("title").value;
   const rating = document.getElementById("rating").value;
   const userName = localStorage.getItem('userName');
+  try {
+    if (webSocketManager.socket.readyState === WebSocket.OPEN) {
+        // Send data over WebSocket
+        webSocketManager.broadcastEvent(userName, ReviewPostEvent, title);
+    } else {
+        console.error('WebSocket connection is not open');
+    }
+} catch (error) {
+    console.error('Error posting review:', error);
+}
 
   try {
       const response = await fetch('/api/review', {
@@ -180,7 +192,10 @@ async function initialize() {
 }
 
 // Call the initialize function when the page loads
-window.addEventListener('load', initialize);
+window.addEventListener('load', () => {
+    initialize();
+    webSocketManager.configureWebSocket();
+});
 
 
 /*function loadNotifications() {
@@ -195,6 +210,3 @@ window.addEventListener('load', initialize);
 }
 
 window.addEventListener('load', loadNotifications);*/
-
-
-
