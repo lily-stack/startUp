@@ -2,6 +2,51 @@
 const ReviewPostEvent = 'posted a new rview for';
 const CommentPostEvent = 'made a new comment on';
 
+class WebSocketManager {
+    constructor() {
+        this.socket = null;
+    }
+
+    displayMsg(cls, from, msg) {
+        const chatText = document.querySelector('#user-messages');
+        chatText.innerHTML =
+            `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+    }
+
+    broadcastEvent(from, type, value) {
+        const event = {
+            from: from,
+            type: type,
+            value: value,
+        };
+        this.socket.send(JSON.stringify(event));
+    }
+
+    // Functionality for peer communication using WebSocket
+
+    configureWebSocket() {
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        this.socket.onopen = (event) => {
+        this.displayMsg('system', 'User', 'connected');
+        };
+        this.socket.onclose = (event) => {
+        this.displayMsg('system', 'User', 'disconnected');
+        };
+        this.socket.onmessage = async (event) => {
+        const msg = JSON.parse(await event.data.text());
+        if (msg.type === ReviewPostEvent) {
+            this.displayMsg('User', msg.from, `posted a review for  ${msg.value.title}`);
+        } else if (msg.type === CommentPostEvent) {
+            this.displayMsg('User', msg.from, `commented on ${msg.value.ctitle}`);
+        }
+    };
+
+}
+}
+
+const webSocketManager = new WebSocketManager();
+
 async function postBook() {
   const author = document.getElementById("author").value;
   const title = document.getElementById("title").value;
@@ -21,7 +66,7 @@ async function postBook() {
           const updatedReviews = await response.json();
           console.log("Reviews updated:", updatedReviews);
           loadReviews(updatedReviews);
-          this.broadcastEvent(userName, ReviewPostEvent, title);
+          webSocketManager.broadcastEvent(userName, ReviewPostEvent, title);
       } else {
           console.error('Failed to post review:', response.statusText);
       }
@@ -77,7 +122,7 @@ async function postComment() {
         const updatedComments = await response.json();
         console.log("Comments updated:", updatedComments);
         loadComments(updatedComments);
-        this.broadcastEvent(userName, CommentPostEvent, ctitle);
+        webSocketManager.broadcastEvent(userName, CommentPostEvent, ctitle);
       } else {
           console.error('Failed to post comment:', response.statusText);
       }
@@ -145,7 +190,7 @@ setInterval(() => {
     chatText.innerHTML;
 }, 9000);
 
-function loadNotifications() {
+/*function loadNotifications() {
   // Retrieve username from local storage
   const userName = localStorage.getItem('userName');
 
@@ -156,32 +201,7 @@ function loadNotifications() {
   });
 }
 
-window.addEventListener('load', loadNotifications);
+window.addEventListener('load', loadNotifications);*/
 
-// Functionality for peer communication using WebSocket
 
-function configureWebSocket() {
-    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
-    this.socket.onopen = (event) => {
-      this.displayMsg('system', 'User', 'connected');
-    };
-    this.socket.onclose = (event) => {
-      this.displayMsg('system', 'User', 'disconnected');
-    };
-    this.socket.onmessage = async (event) => {
-      const msg = JSON.parse(await event.data.text());
-      if (msg.type === ReviewPostEvent) {
-        this.displayMsg('User', msg.from, `posted a review for  ${msg.value.title}`);
-      } else if (msg.type === CommentPostEvent) {
-        this.displayMsg('User', msg.from, `commented on ${msg.value.ctitle}`);
-      }
-    };
 
-    displayMsg(cls, from, msg) {
-        const chatText = document.querySelector('#user-messages');
-        chatText.innerHTML =
-            `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
-    }
-
-  }
