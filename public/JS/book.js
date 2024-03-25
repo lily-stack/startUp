@@ -177,4 +177,11 @@ function configureWebSocket() {
         this.displayMsg('User', msg.from, `commented on ${msg.value.ctitle}`);
       }
     };
+
+    displayMsg(cls, from, msg) {
+        const chatText = document.querySelector('#user-messages');
+        chatText.innerHTML =
+            `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+    }
+
   }
