@@ -182,13 +182,6 @@ async function initialize() {
 // Call the initialize function when the page loads
 window.addEventListener('load', initialize);
 
-// Simulate chat messages that will come over WebSocket
-setInterval(() => {
-  const chatText = document.querySelector('#user-messages');
-  chatText.innerHTML =
-    `<div class="event"><span class="user-event">Bob</span> commented on your recommendation</div>` +
-    chatText.innerHTML;
-}, 9000);
 
 /*function loadNotifications() {
   // Retrieve username from local storage
