@@ -41,6 +41,7 @@ class WebSocketManager {
         } else if (msg.type === CommentPostEvent) {
             this.displayMsg('User', msg.from, `commented on ${msg.value}`);
         }
+        initialize();
     };
 
 }
@@ -54,16 +55,6 @@ async function postBook() {
   const title = document.getElementById("title").value;
   const rating = document.getElementById("rating").value;
   const userName = localStorage.getItem('userName');
-  /*try {
-    if (webSocketManager.socket.readyState === WebSocket.OPEN) {
-        // Send data over WebSocket
-        webSocketManager.broadcastEvent(userName, ReviewPostEvent, title);
-    } else {
-        console.error('WebSocket connection is not open');
-    }
-} catch (error) {
-    console.error('Error posting review:', error);
-}*/
 
   try {
       const response = await fetch('/api/review', {
