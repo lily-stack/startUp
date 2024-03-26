@@ -37,9 +37,9 @@ class WebSocketManager {
         this.socket.onmessage = async (event) => {
         const msg = JSON.parse(await event.data.text());
         if (msg.type === ReviewPostEvent) {
-            this.displayMsg('User', msg.from, `posted a review for  ${msg.value.title}`);
+            this.displayMsg('User', msg.from, `posted a review for ${msg.value}`);
         } else if (msg.type === CommentPostEvent) {
-            this.displayMsg('User', msg.from, `commented on ${msg.value.ctitle}`);
+            this.displayMsg('User', msg.from, `commented on ${msg.value}`);
         }
     };
 
