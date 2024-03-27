@@ -126,3 +126,15 @@ For this deliverable I associate the reviews and comments with the logged in use
 - **Use MongoDB to store credentials** -  Stores user, their comments, and their reviews
 
 - **Restricts functionality** -  You cannot post a review or comment until you have logged in.
+
+## WebSocket Delivarable
+
+For this deliverable I used webSocket to send notifications when someone else posts a review or comment on the frontend in realtime.
+
+- **Backend listens for WebSocket connection** -  Done!
+
+- **Frontend makes WebSocket connection** - Done!
+
+- **Data sent over WebSocket connection** - Done!
+
+- **WebSocket data displayed** - All users will rcieve a notification that another user has posted a review or comment
