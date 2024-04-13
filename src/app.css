@@ -17,6 +17,7 @@ main {
   justify-content: center;
   height: calc(100vh - 110px); /* Adjusted height */
   margin-top: 80px; /* Added */
+  background-color: green !important;
 }
 
 footer {
