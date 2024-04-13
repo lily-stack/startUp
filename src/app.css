@@ -1,34 +1,32 @@
-body {
-    display: flex;
-    flex-direction: column;
-    min-width: 375px;
-  }
-  
+.body {
+  display: flex;
+  flex-direction: column;
+  min-width: 375px;
+  height: 100vh;
+}
+
 header {
   flex: 0 80px;
-  flex-shrink: 0;
 }
 
 main {
-  flex: 1 calc(100vh - 110px);
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: center;
+  height: calc(100vh - 110px); /* Adjusted height */
+  margin-top: 80px; /* Added */
 }
 
 footer {
   flex: 0 30px;
-  display:flex;
-  bottom: 0;
-  flex-shrink: 0;
 }
 
 menu {
   flex: 1;
   display: flex;
-    /*overwrite Bootstrap so the menu does not wrap */
+  /*  overwrite Bootstrap so the menu does not wrap */
   flex-direction: row !important;
   list-style: none;
 }
@@ -36,14 +34,6 @@ menu {
 .navbar-brand {
   padding-left: 0.3em;
   border-bottom: solid rgb(45, 151, 85) thin;
-}
-
-.navbar-nav .nav-link {
-  color: solid rgb(45, 151, 85);
-}
-
-.navbar-nav .nav-link:hover {
-  color: solid rgb(218, 127, 30);
 }
 
 menu .nav-item {
@@ -54,14 +44,27 @@ footer a {
   float: right;
 }
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.footer span {
+  color: gray;
+}
+
+.footer a {
+  color: gray;
+}
+
+
 @media (max-height: 600px) {
   header {
     display: none;
   }
   footer {
     display: none;
-  }
-  main {
-    flex: 1 100vh;
   }
 }
