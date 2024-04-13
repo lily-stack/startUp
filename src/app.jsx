@@ -8,24 +8,49 @@ import './app.css';
 
 export default function App() {
   return (
-    <body className="bg-dark text-light">
+    <BrowserRouter>
+    <div className="bg-dark text-light">
         <header className="container-fluid">
             <nav className="navbar fixed-top navbar-dark">
-                <a className="navbar-brand" href="#">Book Share and Review</a>
+                <div className="navbar-brand" href="#">
+                    Book Share and Review
+                </div>
                 <menu className="navbar-nav">
-                <li className="nav-item"><NavLink className="nav-link" href="index.html">Home</NavLink></li>
-                <li className="nav-item"><NavLink className="nav-link" href="book.html">BookFeed</NavLink></li>
-                <li className="nav-item"><NavLink className="nav-link active" href="about.html">About</NavLink></li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to=''>
+                            Login
+                        </NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to='book'>
+                            BookFeed
+                        </NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link active" to='about'>
+                            About
+                        </NavLink>
+                    </li>
                 </menu>
             </nav>
         </header>
-        <main>App components go here</main>
+        <Routes>
+            <Route path='/' element={<Login />} exact />
+            <Route path='/book' element={<Book />} />
+            <Route path='/about' element={<About />} />
+            <Route path='*' element={<NotFound />} />
+        </Routes>
         <footer className="bg-dark text-white-50">
             <div className="container-fluid">
                 <span className="text-reset">Lillian Hill</span>
-                <NavLink className="text-reset" href="https://github.com/lily-stack/startUp">Source</NavLink>
+                <a className="text-reset" href="https://github.com/lily-stack/startUp">Source</a>
             </div>
         </footer>
-    </body>
+    </div>
+    </BrowserRouter>
   )
+}
+
+function NotFound() {
+    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
 }
