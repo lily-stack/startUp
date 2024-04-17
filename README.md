@@ -140,3 +140,13 @@ For this deliverable I used webSocket to send notifications when someone else po
 - **WebSocket data displayed** - All users will rcieve a notification that another user has posted a review or comment
 
 ## React Delivarable
+
+For this delivarable, I converted the application over to use React
+
+- **Bundled and Transpiled** - Done!
+
+- **Components** - Login, and Reviews and Comments and the about page are all components
+
+- **Router** - I attempted to use a router but it is not fully functional. I couldn't get the buttons or text input boxes to show up.
+
+- **Hooks** - UseState, usenavigate, and useEffect are used in my .jsx files

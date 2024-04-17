@@ -36,7 +36,7 @@ export function About(props) {
     }
     
     return (
-        <main className="container-fluid bg-success text-center">
+        <main className="container-fluid text-center">
             <div>
                 <div id="picture" className="picture-box"> 
                     {imgEl}

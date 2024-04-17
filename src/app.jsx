@@ -15,17 +15,17 @@ export default function App() {
             <div className="navbar-brand">Book Share and Review</div>
             <menu className="navbar-nav">
               <li className="nav-item">
-                <NavLink className="nav-link" to='/' activeClassName="active">
-                  Login
+                <NavLink className="nav-link" to=''>
+                  Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to='/book' activeClassName="active">
+                <NavLink className="nav-link" to='book'>
                   BookFeed
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to='/about' activeClassName="active">
+                <NavLink className="nav-link" to='/about'>
                   About
                 </NavLink>
               </li>

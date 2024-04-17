@@ -17,7 +17,7 @@ main {
   justify-content: center;
   height: calc(100vh - 110px); /* Adjusted height */
   margin-top: 80px; /* Added */
-  background-color: green !important;
+  background-color: rgb(49, 114, 78) !important;
 }
 
 footer {
@@ -34,7 +34,7 @@ menu {
 
 .navbar-brand {
   padding-left: 0.3em;
-  border-bottom: solid rgb(45, 151, 85) thin;
+  border-bottom: solid rgb(49, 114, 78) thin;
 }
 
 menu .nav-item {
